@@ -183,7 +183,7 @@ export default function ChatPage() {
                         >
                             <Box
                                 styleSheet={{
-                                    marginBottom: '3px',
+                                    //marginBottom: '3px',
                                     width: '100%',
                                     marginBottom: '16px',
                                     display: 'flex',
