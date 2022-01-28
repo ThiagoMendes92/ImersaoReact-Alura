@@ -95,7 +95,7 @@ export default function ChatPage() {
                             styleSheet={{
                                 borderRadius: '5px',
                                 backgroundColor: appConfig.theme.colors.primary[500],
-                                marginTop: '-8px',
+                                marginTop: '-10px',
                                 marginLeft: '-5px',
                                 color: appConfig.theme.colors.neutrals[200],
                             }}
@@ -158,7 +158,7 @@ export default function ChatPage() {
             <Box
                 tag="ul"
                 styleSheet={{
-                    overflow: 'scroll',
+                    overflow: 'auto',
                     wordWrap: 'word-brek',
                     display: 'flex',
                     flexDirection: 'column-reverse',
@@ -176,7 +176,6 @@ export default function ChatPage() {
                                 borderRadius: '5px',
                                 padding: '6px',
                                 marginBottom: '12px',
-                                wordWrap: 'word-brek',
                                 hover: {
                                     backgroundColor: appConfig.theme.colors.neutrals[700],
                                 }
@@ -188,11 +187,14 @@ export default function ChatPage() {
                                     width: '100%',
                                     marginBottom: '16px',
                                     display: 'flex',
-                                    alignItems: 'center',
+                                    alignItems: 'flex-start',
                                     justifyContent: 'space-between'
                                 }}
                             >
-                                <Box>
+                                <Box
+                                    styleSheet={{
+                                        marginBottom: '8px',
+                                    }}>
                                     <Image
                                         styleSheet={{
                                             width: '20px',
