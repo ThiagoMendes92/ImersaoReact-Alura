@@ -77,6 +77,7 @@ export default function PaginaInicial() {
                                 // Trocar o valor da variavel atraves do reac e avise quem precisa
                                 setUsername(valor);
                             }}
+                            
                             fullWidth
                             textFieldColors={{
                                 neutral: {
