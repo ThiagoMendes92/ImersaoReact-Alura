@@ -3,6 +3,21 @@ import React from 'react';
 import appConfig from '../config.json';
 import { BiSend } from 'react-icons/bi';
 import { RiDeleteBinLine } from 'react-icons/ri';
+import { createClient } from '@supabase/supabase-js'
+
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzQwMTY5NiwiZXhwIjoxOTU4OTc3Njk2fQ.nNdnoj4-w6FFi97NLmO81F_RKhZkRQNYnWIpI_5nPeA'
+const SUPABASE_URL = 'https://ghkztsbflgcfhzrkqctt.supabase.co'
+const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+const dadosDoSupabase = supabaseClient
+    .from('mensagens')
+    .select('*')
+    .then((dados) => {
+        console.log('Dados da consulta:', dados);
+    });
+
+
+
 
 export default function ChatPage() {
     const [mensagem, setMensagem] = React.useState('');
@@ -47,13 +62,6 @@ export default function ChatPage() {
                 >
 
                     <MessageList mensagens={listaDeMensagens} />
-                    {/*{listaDeMensagens.map((mensagemAtual) => {
-                        return (
-                            <li key={mensagemAtual.id}>
-                                {mensagemAtual.de}: {mensagemAtual.texto}
-                            </li>
-                        )
-                    })}*/}
 
                     <Box
                         as="form"
@@ -153,7 +161,6 @@ export default function ChatPage() {
     }
 
     function MessageList(props) {
-        console.log(props);
         return (
             <Box
                 tag="ul"
@@ -194,6 +201,8 @@ export default function ChatPage() {
                                 <Box
                                     styleSheet={{
                                         marginBottom: '8px',
+                                        display: 'flex',
+                                        alignItems: 'center',
                                     }}>
                                     <Image
                                         styleSheet={{
@@ -237,7 +246,6 @@ export default function ChatPage() {
                                             setListaMensagens([...listaDeMensagens])
                                         }
                                     }
-
                                     }
                                 >
                                     {<RiDeleteBinLine />}
