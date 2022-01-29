@@ -3,7 +3,9 @@ import React from 'react';
 import appConfig from '../config.json';
 import { BiSend } from 'react-icons/bi';
 import { RiDeleteBinLine } from 'react-icons/ri';
-import { createClient } from '@supabase/supabase-js'
+import { createClient } from '@supabase/supabase-js';
+import { useRouter } from 'next/router';
+import { ButtonSendSticker } from '../src/components/ButtonSendSticker.js';
 
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzQwMTY5NiwiZXhwIjoxOTU4OTc3Njk2fQ.nNdnoj4-w6FFi97NLmO81F_RKhZkRQNYnWIpI_5nPeA'
 const SUPABASE_URL = 'https://ghkztsbflgcfhzrkqctt.supabase.co'
@@ -13,6 +15,8 @@ const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 export default function ChatPage() {
     const [mensagem, setMensagem] = React.useState('');
     const [listaDeMensagens, setListaMensagens] = React.useState([]);
+    const roteamento = useRouter();
+    const usuarioLogado = roteamento.query.username;
 
     React.useEffect(() => {
         supabaseClient
@@ -94,15 +98,18 @@ export default function ChatPage() {
                                 borderRadius: '5px',
                                 padding: '5px',
                                 backgroundColor: appConfig.theme.colors.neutrals[800],
-                                marginRight: '12px',
+                                marginRight: '10px',
                                 color: appConfig.theme.colors.neutrals[200],
                             }}
                         />
+                        <ButtonSendSticker />
                         <Button
                             variant='tertiary'
                             label={< BiSend />}
                             type='submit'
                             styleSheet={{
+                                minWidth: '40px',
+                                minHeight: '40px',
                                 borderRadius: '5px',
                                 backgroundColor: appConfig.theme.colors.primary[500],
                                 marginTop: '-10px',
@@ -129,7 +136,7 @@ export default function ChatPage() {
     function handleNovaMensagem(novaMensagem) {
         const mensagem = {
             //id: listaDeMensagens.length + 1,
-            de: 'ThiagoMendes92',
+            de: usuarioLogado,
             texto: novaMensagem,
         };
         supabaseClient
