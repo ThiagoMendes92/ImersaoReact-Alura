@@ -11,6 +11,15 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5v
 const SUPABASE_URL = 'https://ghkztsbflgcfhzrkqctt.supabase.co'
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
+function escutaMensagensEmTempoReal(adicionaMensagem) {
+    return supabaseClient
+        .from('mensagens')
+        .on('INSERT', (respostaLive) => {
+            adicionaMensagem(respostaLive.new);
+        })
+        .subscribe();
+}
+
 
 export default function ChatPage() {
     const [mensagem, setMensagem] = React.useState('');
@@ -27,6 +36,15 @@ export default function ChatPage() {
                 console.log('Dados da consulta:', data);
                 setListaMensagens(data);
             });
+
+        escutaMensagensEmTempoReal((novaMensagem) => {
+            setListaMensagens((valorAtualDaLista) => {
+                return [
+                novaMensagem,
+                ...valorAtualDaLista,
+            ]
+        });
+        });
     }, []);
 
     return (
@@ -102,7 +120,11 @@ export default function ChatPage() {
                                 color: appConfig.theme.colors.neutrals[200],
                             }}
                         />
-                        <ButtonSendSticker />
+                        <ButtonSendSticker
+                            onStickerClick={(sticker) => {
+                                handleNovaMensagem(':sticker: ' + sticker)
+                            }}
+                        />
                         <Button
                             variant='tertiary'
                             label={< BiSend />}
@@ -146,10 +168,6 @@ export default function ChatPage() {
             ])
             .then(({ data }) => {
                 console.log('Criando mensagem: ', data);
-                setListaMensagens([
-                    data[0],
-                    ...listaDeMensagens,
-                ]);
             });
 
         setMensagem('');
@@ -270,7 +288,11 @@ export default function ChatPage() {
 
                                 </Box>
                             </Box>
-                            {mensagem.texto}
+                            {mensagem.texto.startsWith(':sticker:') ? ( <Image src={mensagem.texto.replace(':sticker:', '')} styleSheet={{
+                                        width: '150px',
+                                    }}
+                             /> ) : (mensagem.texto)}
+                            {/*{mensagem.texto}*/}
                         </Text>
                     );
                 })}
