@@ -1,4 +1,4 @@
-![Logo of the project](https://github.com/ThiagoMendes92/.png)
+![Logo of the project](https://github.com/ThiagoMendes92/ImersaoReact-Alura/blob/main/aluracord/src/readmesrc/Screenshot_1.png)
  
 ## ImersãoReact - Alura
 AluraCord
@@ -28,8 +28,11 @@ Aqui estão as tecnologias usadas neste projeto.
 
 ## Imagens
  
-![Home](https://github.com/ThiagoMendes92/.png)
- 
+* **Home**
+![Home](https://github.com/ThiagoMendes92/ImersaoReact-Alura/blob/main/aluracord/src/readmesrc/home01.png)
+
+* **Chat**
+![Chat](https://github.com/ThiagoMendes92/ImersaoReact-Alura/blob/main/aluracord/src/readmesrc/discord01.png)
  
 
 ## Links
