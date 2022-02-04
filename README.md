@@ -28,7 +28,7 @@ Aqui estão as tecnologias usadas neste projeto.
 
 ## Imagens
  
-* **Home**
+* **Home** (para acessar o chat entre com uma conta GitHub)
 ![Home](https://github.com/ThiagoMendes92/ImersaoReact-Alura/blob/main/aluracord/src/readmesrc/home01.png)
 
 * **Chat**
