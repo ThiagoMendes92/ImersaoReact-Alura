@@ -3,7 +3,7 @@
 ## ImersãoReact - Alura
 AluraCord
 
-<p>Introdução ao ReacJS com ImersãoReact, site clone do discord criado durante as aulas da ImersãoReact oferecido pela Alura.</p>
+<p>Introdução ao ReacJS com a ImersãoReact, site clone do discord criado durante as aulas da ImersãoReact oferecido pela Alura.</p>
 <p><a href="https://imersaoreact-discordalura-thiagomendes.vercel.app" target="_blank"> Link do Site </a></p>
  
  
