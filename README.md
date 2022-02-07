@@ -23,6 +23,7 @@ Aqui estão as tecnologias usadas neste projeto.
  
 * Github
 * Vercel
+* Supabase
  
  
 
